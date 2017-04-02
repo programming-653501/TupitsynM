@@ -1,0 +1,58 @@
+#include <iostream>
+#include <vector>
+#include <conio.h>
+#include <cstdlib>
+
+int enter(std::vector <int> vec)
+{
+	for (;;)
+	{
+		char ch = 'a';
+
+		ch = getche();
+		if (strchr("1234567890", ch))
+		{
+			int value = std::atoi(ch);
+			vec.push_back(value);
+		}
+			else
+			{
+				if (ch = '\r')
+				{
+					std::endl;
+					return 0;
+				}
+					else
+					{
+						vec.clear();
+						return 1;
+					}
+			}
+	}
+}
+
+int main()
+{
+	std::vector <int> number1;
+	std::vector <int> number2;
+
+	std::cout << "Enter a first number: ";
+	enter(number1);
+	while (enter(number1))
+	{
+		std::cout << "Incorrect input. Try again. '\n'";
+		enter(number1);
+	}
+
+	std::cout << "Enter a second number: ";
+	enter(number2);
+	while (enter(number2))
+	{
+		std::cout << "Incorrect input. Try again. '\n'";
+		enter(number2);
+	}
+
+	std::system("pause");
+
+	return 0;
+}

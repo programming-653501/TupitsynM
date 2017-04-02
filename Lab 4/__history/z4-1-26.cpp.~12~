@@ -1,0 +1,79 @@
+#include <iostream>
+#include <vector>
+#include <conio.h>
+#include <cmath>
+
+int enter(std::vector <int> &vecInt_LongNumber)
+{
+	for (;;)
+	{
+		char digit = 'a';
+
+		digit = getche();
+		if (strchr("1234567890", digit))
+		{
+			vecInt_LongNumber.push_back(digit - '0');
+		}
+			else
+			{
+				if (digit == '\r')
+				{
+					std::cout << "\n";
+					return 0;
+				}
+					else
+					{
+						vecInt_LongNumber.clear();
+						std::cout << "\nIncorrect input. Try again. \n";
+						return 1;
+					}
+			}
+	}
+}
+
+int main()
+{
+	std::vector <int> vecInt_LongNumber1;
+	std::vector <int> vecInt_LongNumber2;
+
+	int fail;
+
+	std::cout << "Enter a first number: ";
+	do
+	{
+		fail = enter(vecInt_LongNumber1);
+	} while (fail);
+
+	std::cout << "Enter a second number: ";
+	do
+	{
+		fail = enter(vecInt_LongNumber2);
+	} while (fail);
+
+	int value = vecInt_LongNumber1.size() - vecInt_LongNumber2.size();
+	int lengthDifference = std::abs(value);
+
+	if (lengthDifference)
+	{
+		if (vecInt_LongNumber1.size() > vecInt_LongNumber2.size())
+		{
+			for (; lengthDifference; lengthDifference--)
+			{
+				vecInt_LongNumber2.insert(vecInt_LongNumber2.begin(), 0);
+			}
+		}
+			else
+			{
+				for (; lengthDifference; lengthDifference--)
+				{
+					vecInt_LongNumber1.insert(vecInt_LongNumber1.begin(), 0);
+				}
+			}
+	}
+
+
+
+	std::system("pause");
+
+	return 0;
+}

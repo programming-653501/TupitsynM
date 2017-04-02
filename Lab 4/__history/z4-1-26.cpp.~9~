@@ -1,0 +1,47 @@
+#include <iostream>
+#include <algorithm>
+
+int check(int *pointer)
+{
+	int i = 0;
+
+	while (pointer[i] != '\0')
+	{
+		if (!strchr("1234567890", pointer[i])) return 1;
+		i++;
+	}
+
+	return 0;
+}
+
+int main()
+{
+	int number_1[40];
+	int number_2[40];
+
+	std::cout << "Enter the first number: ";
+	while (
+	while (check(number_1))
+	{
+		std::cout << "Incorrect input. Try again. \n";
+		std::cin >> number_1;
+	}
+
+	std::cout << "Enter the second number: ";
+	std::cin >> number_2;
+	while (check(number_2))
+	{
+		std::cout << "Incorrect input. Try again. \n";
+		std::cin >> number_2;
+	}
+
+	int min_length = min(strlen(string_1), strlen(string_2));
+	int max_length = max(strlen(string_1), strlen(string_2));
+
+	//for (i = 0; i <
+
+
+	std::system("pause");
+
+	return 0;
+}
