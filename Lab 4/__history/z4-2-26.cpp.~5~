@@ -1,0 +1,82 @@
+#include <cstdio>
+#include <cstdlib>
+#include <ctype.h>
+#include <vector>
+#include <conio.h>
+#include <iostream>
+
+int enter(std::vector <char> &vecChar_Template)                                 //¬водим длинное число, провер€ем на некорректный ввод
+{
+	for (;;)
+	{
+		char letter = '0';
+
+		letter = getche();
+		if (strchr("*ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", letter))
+		{
+			vecChar_Template.push_back(toupper(letter));
+		}
+			else
+			{
+				if (letter == '\r')
+				{
+					std::cout << "\n";
+					return 0;
+				}
+					else
+					{
+						vecChar_Template.clear();
+						std::cout << "\nIncorrect input. Try again. \n";
+						return 1;
+					}
+			}
+	}
+}
+
+void main()
+{
+	std::vector <char> vecChar_Template;
+
+    int fail;
+
+
+	do
+	{
+		std::cout << "Enter a template: \n";
+		fail = enter(vecChar_Template);
+	} while (fail);
+
+	freopen("dictionary.txt", "r", stdin);
+
+	do
+	{
+		std::vector <char> vecChar_Word;
+		char letter;
+
+		letter = getch();
+		vecChar_Word.push_back(letter);
+
+		if (vecChar_Template.size() == vecChar_Word.size())
+		{
+			int pointer;
+			for (pointer = 0; pointer < vecChar_Word.size(); pointer++)
+			{
+				if (vecChar_Word[pointer] != vecChar_Template[pointer] && vecChar_Template[pointer] != '*') break;
+			}
+			if (pointer == vecChar_Word.size())
+			{
+				for (pointer = 0; pointer < vecChar_Word.size(); pointer++) std::cout << vecChar_Word[pointer];
+				std::cout << '\n';
+            }
+		}
+			else
+			{
+				vecChar_Word.clear();
+				continue;
+            }
+	} while (!stdin);
+
+	std::system("pause");
+
+	std::exit(0);
+}

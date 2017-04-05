@@ -1,1 +1,1 @@
-Labs 1 2 3 4(part 1) are made
+Labs 1 2 3 4 are made
