@@ -1,0 +1,134 @@
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string>
+
+struct Node
+{
+	Node *left;
+	Node *right;
+	std::string word;
+	int frequency;
+};
+
+void AddNode(std::string str, Node **node)
+{
+	if (*node == NULL)
+	{
+		*node = new Node;
+		(*node) -> left = NULL;
+		(*node) -> right = NULL;
+		(*node) -> word = str;
+		(*node) -> frequency = 0;
+	}
+		else
+		{
+			if (str == (*node) -> word)
+			{
+				(*node) -> frequency += 1;
+				return;
+			}
+			if (str < (*node) -> word)
+			{
+				AddNode(str, &(*node) -> left);
+			}
+			if (str > (*node) -> word)
+			{
+				AddNode(str, &(*node) -> right);
+			}
+		}
+}
+
+void AddNode(std::string str, Node **node, int number)
+{
+	if (*node == NULL)
+	{
+		*node = new Node;
+		(*node) -> left = NULL;
+		(*node) -> right = NULL;
+		(*node) -> word = str;
+		(*node) -> frequency = 0;
+	}
+		else
+		{
+			if (str == (*node) -> word)
+			{
+				(*node) -> frequency += 1;
+				return;
+			}
+			if (str < (*node) -> word)
+			{
+				AddNode(str, &(*node) -> left);
+			}
+			if (str > (*node) -> word)
+			{
+				AddNode(str, &(*node) -> right);
+			}
+		}
+}
+
+void SortTree(int number, Node **node, std::string str)
+{
+	if (*node == NULL)
+	{
+		*node = new Node;
+		(*node) -> left = NULL;
+		(*node) -> right = NULL;
+		(*node) -> word = str;
+		(*node) -> frequency = 0;
+	}
+		else
+		{
+			if (number < (*node) -> frequency)
+			{
+				AddNode(str, &(*node) -> left, number);
+			}
+			if (number >= (*node) -> frequency)
+			{
+				AddNode(str, &(*node) -> right, number);
+			}
+        }
+}
+
+void LeftOrder(Node *node, Node **new_node)
+{
+	if (node -> left)
+	{
+		LeftOrder(node -> left, new_node);
+	}
+
+	if (node -> right)
+	{
+		LeftOrder(node -> right, new_node);
+	}
+
+	SortTree(node -> frequency, new_node, node -> word);
+}
+
+int main()
+{
+	FILE *file;
+
+	if ((file = fopen("text.txt", "r")) == NULL)
+	{
+		std::cout << "File \"text.txt\" can't be opened.\n";
+		getch();
+		return 1;
+	}
+
+	Node *root = new Node;
+
+	while(!feof(file))
+	{
+		std::string str;
+		fscanf(file, "%s", str);
+		AddNode(str, &root);
+	}
+
+	Node *NewRoot = new Node;
+	LeftOrder(root, &NewRoot);
+
+	getch();
+
+	return 0;
+}

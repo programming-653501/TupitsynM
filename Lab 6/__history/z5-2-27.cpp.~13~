@@ -1,0 +1,117 @@
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string>
+#include <fstream>
+
+struct Node
+{
+	Node *left;
+	Node *right;
+	std::string word;
+	int frequency;
+};
+
+void AddNode(std::string str, Node **node)
+{
+	if (*node == NULL)
+	{
+		*node = new Node;
+		(*node) -> left = NULL;
+		(*node) -> right = NULL;
+		(*node) -> word = str;
+		(*node) -> frequency = 0;
+	}
+		else
+		{
+			if (str == (*node) -> word)
+			{
+				(*node) -> frequency += 1;
+				return;
+			}
+			if (str < (*node) -> word)
+			{
+				AddNode(str, &(*node) -> left);
+			}
+			if (str > (*node) -> word)
+			{
+				AddNode(str, &(*node) -> right);
+			}
+		}
+}
+
+void SortTree(int number, Node **node, std::string str)
+{
+	if (*node == NULL)
+	{
+		*node = new Node;
+		(*node) -> left = NULL;
+		(*node) -> right = NULL;
+		(*node) -> word = str;
+		(*node) -> frequency = number;
+	}
+		else
+		{
+			if (number >= (*node) -> frequency)
+			{
+				SortTree(number, &(*node) -> left, str);
+			}
+			if (number < (*node) -> frequency)
+			{
+				SortTree(number, &(*node) -> right, str);
+			}
+        }
+}
+
+void LeftOrder(Node *node, Node **new_node)
+{
+	if (node -> left)
+	{
+		LeftOrder(node -> left, new_node);
+	}
+
+	SortTree(node -> frequency, new_node, node -> word);
+
+	if (node -> right)
+	{
+		LeftOrder(node -> right, new_node);
+	}
+}
+
+void LeftOrder(Node *node)
+{
+	if (node -> left)
+	{
+		LeftOrder(node -> left);
+	}
+
+	std::cout << node -> word << " ";
+
+	if (node -> right)
+	{
+		LeftOrder(node -> right);
+	}
+}
+
+int main()
+{
+	ifstream file("text.txt");
+
+	Node *root = NULL;
+
+	while(!file.eof())
+	{
+		std::string str;
+		std::getline(file, str, ' ');
+		AddNode(str, &root);
+	}
+
+	Node *NewRoot = NULL;
+	LeftOrder(root, &NewRoot);
+
+	LeftOrder(NewRoot);
+
+	getch();
+
+	return 0;
+}

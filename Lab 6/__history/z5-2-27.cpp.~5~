@@ -1,0 +1,65 @@
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <string>
+
+struct Node
+{
+	Node *left;
+	Node *right;
+	std::string word;
+	int frequency;
+};
+
+void AddNode(std::string str, Node **node)
+{
+	if (*node == NULL)
+	{
+		*node = new Node;
+		(*node) -> left = NULL;
+		(*node) -> right = NULL:
+		(*node) -> word = str;
+		(*node) -> frequency = 0;
+	}
+		else
+		{
+			if (str == (*node) -> word)
+			{
+				(*node) -> frequency += 1;
+				return;
+			}
+			if (str < (*node) -> word)
+			{
+				AddNode(str, &(*node) -> left);
+			}
+			if (str > (*node) -> word)
+			{
+				AddNode(str, &(*node) -> right);
+			}
+		}
+}
+
+int mail()
+{
+	FILE *file;
+
+	if ((file = fopen("text.txt", "r")) == NULL)
+	{
+		std::cout << "File \"text.txt\" can't be opened.\n";
+		getch();
+		return 1;
+	}
+
+	Node *root;
+
+	while(!feof(file))
+	{
+		std::string str;
+		fscanf(file, "%s", str);
+		AddNode(str, &root);
+    }
+
+	getch();
+
+	return 0;
+}
