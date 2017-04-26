@@ -1,0 +1,23 @@
+#include <iostream>
+#include <fstream>
+
+struct List_Elem
+{
+	List_Elem *next;
+	List_Elem *prev;
+	int Queue_Number;
+	char action;
+	char symbol;
+};
+
+int main()
+{
+	ifstream file("instructions.txt.");
+
+
+
+
+	getchar();
+
+	return 0;
+}

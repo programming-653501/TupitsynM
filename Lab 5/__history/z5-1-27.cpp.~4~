@@ -1,0 +1,72 @@
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+#include <queue>
+
+struct List_Elem
+{
+	List_Elem *next;
+	List_Elem *prev;
+	int Queue_Number;
+	char action;
+	char symbol;
+};
+struct List
+{
+	List_Elem *Head;
+	List_Elem *Tail;
+	int Number;
+};
+
+int main()
+{
+	List Instructions;
+	Instructions.Head = NULL;
+	Instructions.Tail = NULL;
+	Instructions.Number = 0;
+
+	FILE *file;
+	if ((file = fopen("instructions", "rb")) == NULL)
+	{
+		std::cout << "File \"instructions.txt\" can't be opened\n";
+		getch();
+		return 1;
+	}
+
+	int n;
+	fread(&n, sizeof(int), 1, file);
+
+	std::queue <int> *queues;
+	queues = new std::queue <int> [n];
+
+	while(!feof(file))
+	{
+		Instructions.Number++;
+		List_Elem *p = new List_Elem;
+		p -> next = p -> prev = NULL;
+		int i;
+		fread(&i, sizeof(int), 1, file);
+		p -> Queue_Number = i;
+		char pr;
+		fread(&pr, sizeof(char), 1, file);
+		p -> action = pr;
+		char s;
+		fread(&s, sizeof(char), 1, file);
+		p -> symbol = s;
+		if (Instructions.Head == NULL)
+		{
+			Instructions.Head = p;
+			Instructions.Tail = p;
+		}
+			else
+			{
+				p -> prev = Instructions.Tail;
+				Instructions.Tail -> next = p;
+				Instructions.Tail = p;
+            }
+	}
+
+	getch();
+
+	return 0;
+}
