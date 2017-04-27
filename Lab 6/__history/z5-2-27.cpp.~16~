@@ -97,23 +97,7 @@ void LeftOrder(Node *node)
 
 int main()
 {
-	ifstream input("text.txt");
-	ofstream output("words.txt");
-
-	while (!input.eof())
-	{
-		char ch;
-		ch = input.get();
-		if (!strchr("!@#$%^&*()_+-={}|.,\\;:'\"/?<>\n\r", ch) && ch != EOF)
-		{
-			output.put(ch);
-		}
-	}
-
-	input.close();
-	output.close();
-
-	ifstream file("words.txt");
+	ifstream file("text.txt");
 
 	Node *root = NULL;
 
