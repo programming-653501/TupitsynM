@@ -1,0 +1,545 @@
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <vector>
+#include <ctype.h>
+
+struct Way
+{
+	char starting_point[15];
+	char waypoint1[15];
+	char waypoint2[15];
+	char endpoint[15];
+};
+
+struct Days
+{
+	int hours;
+	int minutes;
+	int days[7];
+};
+
+struct Flight
+{
+	unsigned int flight_number;
+	char airplane_type[20];
+	Way way;
+	Days days;
+	int seats_number;
+	int free_seats;
+};
+
+void SearchFlightNumber(std::vector <Flight *> all_flights)
+{
+	system("cls");
+	std::cout << "1.1 Search flight number\n";
+
+	for(;;)
+	{
+		std::cout << "Enter flight number: ";
+		int number;
+		std::cin >> number;
+		while (!std::cin)
+		{
+			std::cin.clear();
+			while (std::cin.get() != '\n');
+			std::cout << "Incorrect input. Try again.\n";
+			std::cout << "Enter flight number: ";
+			std::cin >> number;
+		}
+
+		bool found = false;
+		int k = 0;
+		for (int i = 0; i < all_flights.size(); i++)
+		{
+            if (all_flights[i] -> flight_number == number)
+			{
+				if (found == false)
+				{
+					std::cout << " ____________________________________________________________________________________________________________________________________________________________________________________________\n";
+					std::cout << "|Flight number: | Airplane Type:      | Way:                                                                 | Time: | Days:                                                   | Free seats: |\n";
+					std::cout << "|_______________|_____________________|______________________________________________________________________|_______|_________________________________________________________|_____________|\n";
+					found = true;
+				}
+
+				k++;
+				printf("|%d:%13d| %-20s|                                                                      | %02d:%02d |                                                         | %-12d|", k, all_flights[i] -> flight_number, all_flights[i] -> airplane_type, all_flights[i] -> days.hours, all_flights[i] -> days.minutes, all_flights[i] -> free_seats);
+
+				for (int j = 0; j < 71; j++) std::cout << '\b';
+				int rewind = 0;
+				if (all_flights[i] -> days.days[0])
+				{
+					std::cout << "Monday ";
+					rewind += 7;
+				}
+				if (all_flights[i] -> days.days[1])
+				{
+					std::cout << "Tuesday ";
+					rewind += 8;
+				}
+				if (all_flights[i] -> days.days[2])
+				{
+					std::cout << "Wednesday ";
+					rewind += 10;
+				}
+				if (all_flights[i] -> days.days[3])
+				{
+					std::cout << "Thusday ";
+					rewind += 8;
+				}
+				if (all_flights[i] -> days.days[4])
+				{
+					std::cout << "Friday ";
+					rewind += 7;
+				}
+				if (all_flights[i] -> days.days[5])
+				{
+					std::cout << "Saturday ";
+					rewind += 9;
+				}
+				if (all_flights[i] -> days.days[6])
+				{
+					std::cout << "Sunday";
+					rewind += 6;
+				}
+
+				for (int j = 0; j < rewind; j++) std::cout << '\b';
+
+				for (int j = 0; j < 79; j++) std::cout << '\b';
+				std::cout << all_flights[i] -> way.starting_point << " - ";
+				if (strcmp(all_flights[i] -> way.waypoint1, "NULL")) std::cout << all_flights[i] -> way.waypoint1 << " - ";
+				if (strcmp(all_flights[i] -> way.waypoint2, "NULL")) std::cout << all_flights[i] -> way.waypoint2 << " - ";
+				std::cout << all_flights[i] -> way.endpoint;
+				std::cout << '\n';
+
+				std::cout << "|_______________|_____________________|______________________________________________________________________|_______|_________________________________________________________|_____________|\n";
+			}
+
+		}
+
+		if (found == false) std::cout << "Flight number " << number << " not found.\n";
+
+		std::cout << "Do you want to continue your search? (Y/N)\n";
+		char choice;
+		choice = getch();
+		while (tolower(choice) != 'n' && tolower(choice) != 'y')
+		{
+			std::cout << "Invalid command. Try again.\n";
+			choice = getch();
+		}
+		if (tolower(choice) == 'n') return;
+	}
+}
+void SearchAirplaneType(std::vector <Flight *> all_flights)
+{
+	system("cls");
+	std::cout << "1.1 Search airplane type\n";
+
+	for(;;)
+	{
+		std::cout << "Enter airplane type: ";
+		char type[20];
+		std::cin >> type;
+		while (!std::cin)
+		{
+			std::cin.clear();
+			while (std::cin.get() != '\n');
+			std::cout << "Incorrect input. Try again.\n";
+			std::cout << "Enter airplane type: ";
+			std::cin >> type;
+		}
+
+		bool found = false;
+		int k = 0;
+		for (int i = 0; i < all_flights.size(); i++)
+		{
+			if (!strcmp(all_flights[i] -> airplane_type, type))
+			{
+				if (found == false)
+				{
+					std::cout << " ____________________________________________________________________________________________________________________________________________________________________________________________\n";
+					std::cout << "|Flight number: | Airplane Type:      | Way:                                                                 | Time: | Days:                                                   | Free seats: |\n";
+					std::cout << "|_______________|_____________________|______________________________________________________________________|_______|_________________________________________________________|_____________|\n";
+					found = true;
+				}
+
+				k++;
+				printf("|%d:%13d| %-20s|                                                                      | %02d:%02d |                                                         | %-12d|", k, all_flights[i] -> flight_number, all_flights[i] -> airplane_type, all_flights[i] -> days.hours, all_flights[i] -> days.minutes, all_flights[i] -> free_seats);
+
+				for (int j = 0; j < 71; j++) std::cout << '\b';
+				int rewind = 0;
+				if (all_flights[i] -> days.days[0])
+				{
+					std::cout << "Monday ";
+					rewind += 7;
+				}
+				if (all_flights[i] -> days.days[1])
+				{
+					std::cout << "Tuesday ";
+					rewind += 8;
+				}
+				if (all_flights[i] -> days.days[2])
+				{
+					std::cout << "Wednesday ";
+					rewind += 10;
+				}
+				if (all_flights[i] -> days.days[3])
+				{
+					std::cout << "Thusday ";
+					rewind += 8;
+				}
+				if (all_flights[i] -> days.days[4])
+				{
+					std::cout << "Friday ";
+					rewind += 7;
+				}
+				if (all_flights[i] -> days.days[5])
+				{
+					std::cout << "Saturday ";
+					rewind += 9;
+				}
+				if (all_flights[i] -> days.days[6])
+				{
+					std::cout << "Sunday";
+					rewind += 6;
+				}
+
+				for (int j = 0; j < rewind; j++) std::cout << '\b';
+
+				for (int j = 0; j < 79; j++) std::cout << '\b';
+				std::cout << all_flights[i] -> way.starting_point << " - ";
+				if (strcmp(all_flights[i] -> way.waypoint1, "NULL")) std::cout << all_flights[i] -> way.waypoint1 << " - ";
+				if (strcmp(all_flights[i] -> way.waypoint2, "NULL")) std::cout << all_flights[i] -> way.waypoint2 << " - ";
+				std::cout << all_flights[i] -> way.endpoint;
+				std::cout << '\n';
+
+				std::cout << "|_______________|_____________________|______________________________________________________________________|_______|_________________________________________________________|_____________|\n";
+			}
+
+		}
+
+		if (found == false) std::cout << "Airplane type " << type << " not found.\n";
+
+		std::cout << "Do you want to continue your search? (Y/N)\n";
+		char choice;
+		choice = getch();
+		while (tolower(choice) != 'n' && tolower(choice) != 'y')
+		{
+			std::cout << "Invalid command. Try again.\n";
+			choice = getch();
+		}
+		if (tolower(choice) == 'n') return;
+	}
+}
+void SearchRoute();
+void SearchArrivalTime(std::vector <Flight *> all_flights)
+{
+	system("cls");
+	std::cout << "1.4 Search arrival time\n";
+
+	for(;;)
+	{
+		std::cout << "Enter arrival time(hh:mm): ";
+		int hours;
+		int minutes;
+		while(scanf("%d:%d", &hours, &minutes) != 2)
+		{
+            std::cin.clear();
+			while (std::cin.get() != '\n');
+			std::cout << "Incorrect time. Try again.\n";
+			std::cout << "Enter arrival time(hh:mm): ";
+        }
+
+		bool found = false;
+		int k = 0;
+		for (int i = 0; i < all_flights.size(); i++)
+		{
+			if (all_flights[i] -> days.hours == hours && all_flights[i] -> days.minutes == minutes)
+			{
+				if (found == false)
+				{
+					std::cout << " ____________________________________________________________________________________________________________________________________________________________________________________________\n";
+					std::cout << "|Flight number: | Airplane Type:      | Way:                                                                 | Time: | Days:                                                   | Free seats: |\n";
+					std::cout << "|_______________|_____________________|______________________________________________________________________|_______|_________________________________________________________|_____________|\n";
+					found = true;
+				}
+
+				k++;
+				printf("|%d:%13d| %-20s|                                                                      | %02d:%02d |                                                         | %-12d|", k, all_flights[i] -> flight_number, all_flights[i] -> airplane_type, all_flights[i] -> days.hours, all_flights[i] -> days.minutes, all_flights[i] -> free_seats);
+
+				for (int j = 0; j < 71; j++) std::cout << '\b';
+				int rewind = 0;
+				if (all_flights[i] -> days.days[0])
+				{
+					std::cout << "Monday ";
+					rewind += 7;
+				}
+				if (all_flights[i] -> days.days[1])
+				{
+					std::cout << "Tuesday ";
+					rewind += 8;
+				}
+				if (all_flights[i] -> days.days[2])
+				{
+					std::cout << "Wednesday ";
+					rewind += 10;
+				}
+				if (all_flights[i] -> days.days[3])
+				{
+					std::cout << "Thusday ";
+					rewind += 8;
+				}
+				if (all_flights[i] -> days.days[4])
+				{
+					std::cout << "Friday ";
+					rewind += 7;
+				}
+				if (all_flights[i] -> days.days[5])
+				{
+					std::cout << "Saturday ";
+					rewind += 9;
+				}
+				if (all_flights[i] -> days.days[6])
+				{
+					std::cout << "Sunday";
+					rewind += 6;
+				}
+
+				for (int j = 0; j < rewind; j++) std::cout << '\b';
+
+				for (int j = 0; j < 79; j++) std::cout << '\b';
+				std::cout << all_flights[i] -> way.starting_point << " - ";
+				if (strcmp(all_flights[i] -> way.waypoint1, "NULL")) std::cout << all_flights[i] -> way.waypoint1 << " - ";
+				if (strcmp(all_flights[i] -> way.waypoint2, "NULL")) std::cout << all_flights[i] -> way.waypoint2 << " - ";
+				std::cout << all_flights[i] -> way.endpoint;
+				std::cout << '\n';
+
+				std::cout << "|_______________|_____________________|______________________________________________________________________|_______|_________________________________________________________|_____________|\n";
+			}
+
+		}
+
+		if (found == false) std::cout << "Arrival time " << hours << ":" << minutes << " not found.\n";
+
+
+		std::cout << "Do you want to continue your search? (Y/N)\n";
+		char choice;
+		choice = getch();
+		while (tolower(choice) != 'n' && tolower(choice) != 'y')
+		{
+			std::cout << "Invalid command. Try again.\n";
+			choice = getch();
+		}
+		if (tolower(choice) == 'n') return;
+	}
+}
+void SearchArrivalDay();
+void SearchClosestFlight();
+void OrderTickets();
+void ReturnTickets();
+void ShowTickets();
+void PrintSearchMenu(std::vector <Flight *> all_flights)
+{
+	for (;;)
+	{
+		system("cls");
+		std::cout << "1.Search\n";
+		std::cout << "\t1.1 Search flight number\n";
+		std::cout << "\t1.2 Search airplane type\n";
+		std::cout << "\t1.3 Search route\n";
+		std::cout << "\t1.4 Search arrival time\n";
+		std::cout << "\t1.5 Search arrival day\n";
+		std::cout << "\t1.6 Search closest flight\n";
+		std::cout << "\t1.7 Return\n";
+
+		char choice;
+		choice = getch();
+		while (choice != '1' && choice != '2' && choice != '3' && choice != '4' && choice != '5' && choice != '6' && choice != '7')
+		{
+			std::cout << "\nInvalid command. Try again\n";
+			choice = getch();
+		}
+		std::cout << '\n';
+
+		switch(atoi(&choice))
+			{
+				case 1: SearchFlightNumber(all_flights);
+						break;
+				case 2: SearchAirplaneType(all_flights);
+						break;
+				//case 3: SearchRoute();
+				//		break;
+				case 4: SearchArrivalTime(all_flights);
+						break;
+				//case 5: SearchArrivalDay();
+				//		break;
+				//case 6: SearchClosestFlight();
+				//		break;
+				case 7: return;
+			}
+	}
+}
+void PrintTimetable(std::vector <Flight *> all_flights)
+{
+	system("cls");
+
+	std::cout << " ____________________________________________________________________________________________________________________________________________________________________________________________\n";
+	std::cout << "|Flight number: | Airplane Type:      | Way:                                                                 | Time: | Days:                                                   | Free seats: |\n";
+	std::cout << "|_______________|_____________________|______________________________________________________________________|_______|_________________________________________________________|_____________|\n";
+	for (int i = 0; i < all_flights.size(); i++)
+	{
+		printf("|%d:%13d| %-20s|                                                                      | %02d:%02d |                                                         | %-12d|", i + 1, all_flights[i] -> flight_number, all_flights[i] -> airplane_type, all_flights[i] -> days.hours, all_flights[i] -> days.minutes, all_flights[i] -> free_seats);
+
+		for (int j = 0; j < 71; j++) std::cout << '\b';
+		int rewind = 0;
+		if (all_flights[i] -> days.days[0])
+		{
+			std::cout << "Monday ";
+			rewind += 7;
+		}
+		if (all_flights[i] -> days.days[1])
+		{
+			std::cout << "Tuesday ";
+			rewind += 8;
+		}
+		if (all_flights[i] -> days.days[2])
+		{
+			std::cout << "Wednesday ";
+			rewind += 10;
+		}
+		if (all_flights[i] -> days.days[3])
+		{
+			std::cout << "Thusday ";
+			rewind += 8;
+		}
+		if (all_flights[i] -> days.days[4])
+		{
+			std::cout << "Friday ";
+			rewind += 7;
+		}
+		if (all_flights[i] -> days.days[5])
+		{
+			std::cout << "Saturday ";
+			rewind += 9;
+		}
+		if (all_flights[i] -> days.days[6])
+		{
+			std::cout << "Sunday";
+			rewind += 6;
+		}
+
+		for (int j = 0; j < rewind; j++) std::cout << '\b';
+
+		for (int j = 0; j < 79; j++) std::cout << '\b';
+		std::cout << all_flights[i] -> way.starting_point << " - ";
+		if (strcmp(all_flights[i] -> way.waypoint1, "NULL")) std::cout << all_flights[i] -> way.waypoint1 << " - ";
+		if (strcmp(all_flights[i] -> way.waypoint2, "NULL")) std::cout << all_flights[i] -> way.waypoint2 << " - ";
+		std::cout << all_flights[i] -> way.endpoint;
+		std::cout << '\n';
+
+		std::cout << "|_______________|_____________________|______________________________________________________________________|_______|_________________________________________________________|_____________|\n";
+	}
+
+	std::cout << "Tap any key to return...";
+
+	getch();
+}
+void PrintTicketsMenu()
+{
+	for (;;)
+	{
+        system("cls");
+		std::cout << "3.Tickets\n";
+		std::cout << "\t3.1 Order tickets\n";
+		std::cout << "\t3.2 View my orders\n";
+		std::cout << "\t3.3 Return tickets\n";
+		std::cout << "\t3.4 Return\n";
+
+        char choice;
+		choice = getch();
+		while (choice != '1' && choice != '2' && choice != '3' && choice != '4')
+		{
+			std::cout << "\nInvalid command. Try again\n";
+			choice = getch();
+		}
+		std::cout << '\n';
+
+        switch(atoi(&choice))
+			{
+				//case 1: OrderTickets();
+				//		break;
+				//case 2: ShowTickets();
+				//		break;
+				//case 3: ReturnTickets();
+				//		break;
+				case 4: return;
+			}
+	}
+}
+int PrintMainMenu()
+{
+	system("cls");
+	std::cout << "Welcome to BelAvia electronic ticket window!\n";
+	std::cout << "Choose one of the options (enter it number): \n";
+	std::cout << "1. Search\n";
+	std::cout << "2. Show timetable\n";
+	std::cout << "3. Tickets\n";
+	std::cout << "4. Quit\n";
+
+	char choice;
+	choice = getch();
+	while (choice != '1' && choice != '2' && choice != '3' && choice != '4')
+	{
+		std::cout << "\nInvalid command. Try again\n";
+		choice = getch();
+	}
+	std::cout << '\n';
+
+	return atoi(&choice);
+}
+
+int main()
+{
+	FILE *timetable;
+	timetable = fopen("timetable.txt", "r");
+
+	if (timetable == NULL)
+	{
+		std::cout << "Server error. Try again later.";
+		getch();
+		return 1;
+	}
+
+	std::vector <Flight *> all_flights(0);
+    int counter = 0;
+
+
+	while (!feof(timetable))
+	{
+		all_flights.push_back(NULL);
+		all_flights[counter] = new Flight;
+		fscanf(timetable, "%d %s %s %s %s %s %d %d %d %d %d %d %d %d %d %d\n", &(all_flights[counter] -> flight_number), &(all_flights[counter] -> airplane_type), &(all_flights[counter] -> way.starting_point), &(all_flights[counter] -> way.waypoint1), &(all_flights[counter] -> way.waypoint2), &(all_flights[counter] -> way.endpoint), &(all_flights[counter] -> days.hours), &(all_flights[counter] -> days.minutes), &(all_flights[counter] -> days.days[0]), &(all_flights[counter] -> days.days[1]), &(all_flights[counter] -> days.days[2]), &(all_flights[counter] -> days.days[3]), &(all_flights[counter] -> days.days[4]), &(all_flights[counter] -> days.days[5]), &(all_flights[counter] -> days.days[6]), &(all_flights[counter] -> seats_number));
+		all_flights[counter] -> free_seats = all_flights[counter] -> seats_number;
+		counter++;
+	}
+
+	fclose(timetable);
+
+	for(;;)
+	{
+		int choice;
+		choice = PrintMainMenu();
+
+		switch(choice)
+		{
+			case 1: PrintSearchMenu(all_flights);
+					break;
+			case 2: PrintTimetable(all_flights);
+					break;
+			case 3: PrintTicketsMenu();
+					break;
+			case 4: return 0;
+		}
+	}
+}
