@@ -1270,21 +1270,17 @@ void OrdersSave(Orders orders)
 	Ticket *p;
 	p = orders.head;
     FILE *tickets;
-	tickets = fopen("tickets.txt", "w");
+	tickets = fopen("tickets.txt", "a+");
 
 	while(p)
 	{
 		fprintf(tickets, "%s %s %s %d %d %d %d\n", p -> name, p -> surname, p -> passport, p -> flight_number, p -> day, p -> hours, p -> minutes);
         p = p -> next;
 	}
-
-	fclose(tickets);
 }
 
 int main()
 {
-	std::cout << "Loading...";
-
 	FILE *timetable;
 	timetable = fopen("timetable.txt", "r");
 
@@ -1322,34 +1318,29 @@ int main()
 	orders.amount = 0;
 	if (tickets != NULL)
 	{
-		if(getc(tickets) != EOF)
+		while (!feof(tickets))
 		{
-            rewind(tickets);
-			while (!feof(tickets))
+			Ticket *p;
+			p = new Ticket;
+			orders.amount += 1;
+			if (orders.head == NULL)
 			{
-				Ticket *p;
-				p = new Ticket;
-				orders.amount += 1;
-				if (orders.head == NULL)
+				orders.head = p;
+				orders.last = p;
+				p -> next = NULL;
+			}
+				else
 				{
-					orders.head = p;
+					orders.last -> next = p;
 					orders.last = p;
 					p -> next = NULL;
 				}
-					else
-					{
-						orders.last -> next = p;
-						orders.last = p;
-						p -> next = NULL;
-					}
-				fscanf(tickets, "%s %s %s %d %d %d %d\n", p -> name, p -> surname, p -> passport, &(p -> flight_number), &(p -> day), &(p -> hours), &(p -> minutes));
-			}
+			fscanf(tickets, "%s %s %s %d %d %d %d\n", p -> name, p -> surname, p -> passport, &(p -> flight_number), &(p -> day), &(p -> hours), &(p -> minutes));
 		}
 	}
 
 	fclose(tickets);
 
-    system("cls");
 	for(;;)
 	{
 		int choice;

@@ -1322,9 +1322,8 @@ int main()
 	orders.amount = 0;
 	if (tickets != NULL)
 	{
-		if(getc(tickets) != EOF)
+		if(getc(tickets) == EOF)
 		{
-            rewind(tickets);
 			while (!feof(tickets))
 			{
 				Ticket *p;

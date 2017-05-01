@@ -791,70 +791,69 @@ void SearchClosestFlight(std::vector <Flight *> all_flights)
 }
 void OrderTickets(Orders &orders, std::vector <Flight *> all_flights)
 {
-
-	system("cls");
-	std::cout << "3.1 Order tickets\n";
-
-	std::cout << " ____________________________________________________________________________________________________________________________________________________________________________________________\n";
-	std::cout << "|Flight number: | Airplane Type:      | Way:                                                                 | Time: | Days:                                                   | Seats:      |\n";
-	std::cout << "|_______________|_____________________|______________________________________________________________________|_______|_________________________________________________________|_____________|\n";
-	for (int i = 0; i < all_flights.size(); i++)
+	for(;;)
 	{
-		printf("|%d:%13d| %-20s|                                                                      | %02d:%02d |                                                         | %-12d|", i + 1, all_flights[i] -> flight_number, all_flights[i] -> airplane_type, all_flights[i] -> days.hours, all_flights[i] -> days.minutes, all_flights[i] -> seats_number);
+		system("cls");
+		std::cout << "3.1 Order tickets\n";
 
-		for (int j = 0; j < 71; j++) std::cout << '\b';
-		int rewind = 0;
-		if (all_flights[i] -> days.days[0])
-		{
-			std::cout << "Monday ";
-			rewind += 7;
-		}
-		if (all_flights[i] -> days.days[1])
-		{
-			std::cout << "Tuesday ";
-			rewind += 8;
-		}
-		if (all_flights[i] -> days.days[2])
-		{
-			std::cout << "Wednesday ";
-			rewind += 10;
-		}
-		if (all_flights[i] -> days.days[3])
-		{
-			std::cout << "Thusday ";
-			rewind += 8;
-		}
-		if (all_flights[i] -> days.days[4])
-		{
-			std::cout << "Friday ";
-			rewind += 7;
-		}
-		if (all_flights[i] -> days.days[5])
-		{
-			std::cout << "Saturday ";
-			rewind += 9;
-		}
-		if (all_flights[i] -> days.days[6])
-		{
-			std::cout << "Sunday";
-			rewind += 6;
-		}
-
-		for (int j = 0; j < rewind; j++) std::cout << '\b';
-
-		for (int j = 0; j < 79; j++) std::cout << '\b';
-		std::cout << all_flights[i] -> way.starting_point << " - ";
-		if (strcmp(all_flights[i] -> way.waypoint1, "NULL")) std::cout << all_flights[i] -> way.waypoint1 << " - ";
-		if (strcmp(all_flights[i] -> way.waypoint2, "NULL")) std::cout << all_flights[i] -> way.waypoint2 << " - ";
-		std::cout << all_flights[i] -> way.endpoint;
-		std::cout << '\n';
-
+		std::cout << " ____________________________________________________________________________________________________________________________________________________________________________________________\n";
+		std::cout << "|Flight number: | Airplane Type:      | Way:                                                                 | Time: | Days:                                                   | Seats:      |\n";
 		std::cout << "|_______________|_____________________|______________________________________________________________________|_______|_________________________________________________________|_____________|\n";
-	}
+		for (int i = 0; i < all_flights.size(); i++)
+		{
+			printf("|%d:%13d| %-20s|                                                                      | %02d:%02d |                                                         | %-12d|", i + 1, all_flights[i] -> flight_number, all_flights[i] -> airplane_type, all_flights[i] -> days.hours, all_flights[i] -> days.minutes, all_flights[i] -> seats_number);
 
-    for(;;)
-	{
-		std::cout << "\nWhich flight you want to order tickets to? \n";
+			for (int j = 0; j < 71; j++) std::cout << '\b';
+			int rewind = 0;
+			if (all_flights[i] -> days.days[0])
+			{
+				std::cout << "Monday ";
+				rewind += 7;
+			}
+			if (all_flights[i] -> days.days[1])
+			{
+				std::cout << "Tuesday ";
+				rewind += 8;
+			}
+			if (all_flights[i] -> days.days[2])
+			{
+				std::cout << "Wednesday ";
+				rewind += 10;
+			}
+			if (all_flights[i] -> days.days[3])
+			{
+				std::cout << "Thusday ";
+				rewind += 8;
+			}
+			if (all_flights[i] -> days.days[4])
+			{
+				std::cout << "Friday ";
+				rewind += 7;
+			}
+			if (all_flights[i] -> days.days[5])
+			{
+				std::cout << "Saturday ";
+				rewind += 9;
+			}
+			if (all_flights[i] -> days.days[6])
+			{
+				std::cout << "Sunday";
+				rewind += 6;
+			}
+
+			for (int j = 0; j < rewind; j++) std::cout << '\b';
+
+			for (int j = 0; j < 79; j++) std::cout << '\b';
+			std::cout << all_flights[i] -> way.starting_point << " - ";
+			if (strcmp(all_flights[i] -> way.waypoint1, "NULL")) std::cout << all_flights[i] -> way.waypoint1 << " - ";
+			if (strcmp(all_flights[i] -> way.waypoint2, "NULL")) std::cout << all_flights[i] -> way.waypoint2 << " - ";
+			std::cout << all_flights[i] -> way.endpoint;
+			std::cout << '\n';
+
+			std::cout << "|_______________|_____________________|______________________________________________________________________|_______|_________________________________________________________|_____________|\n";
+		}
+
+		std::cout << "Which flight you want to order tickets to? \n";
 		char number[4];
 		std::cin >> number;
 		while (atoi(number) < 1 || atoi(number) > all_flights.size())
@@ -865,7 +864,7 @@ void OrderTickets(Orders &orders, std::vector <Flight *> all_flights)
 			std::cin >> number;
 		}
 
-		std::cout << "\nChoose day to search:\n";
+		std::cout << "Choose day to search:\n";
 		std::cout << "\t1. Monday\n";
 		std::cout << "\t2. Tuesday\n";
 		std::cout << "\t3. Wednesday\n";
@@ -875,13 +874,13 @@ void OrderTickets(Orders &orders, std::vector <Flight *> all_flights)
 		std::cout << "\t7. Sunday\n";
 
 		char day[2];
-		day[0] = getche();
+		day[0] = getch();
 		for(;;)
 		{
 			while (day[0] != '1' && day[0] != '2' && day[0] != '3' && day[0] != '4' && day[0] != '5' && day[0] != '6' && day[0] != '7')
 			{
 				std::cout << "\nInvalid command. Try again\n";
-				day[0] = getche();
+				day[0] = getch();
 			}
 			if (all_flights.at(atoi(number) - 1) -> days.days[(atoi(day) - 1)]) break;
 				else
@@ -909,15 +908,15 @@ void OrderTickets(Orders &orders, std::vector <Flight *> all_flights)
 					orders.last = p;
 					p -> next = NULL;
 				}
-			std::cout << "\nEnter your personal data(Be carefull! Any mistake - and your are not flying anywhere!!!):\n";
+			std::cout << "Enter your personal data(be carefull! Any mistake - and your are not flying anywhere):\n";
 			std::cout << "Name: ";
 			char str[16];
 			std::cin >> str;
 			strcpy(p -> name, str);
-			std::cout << "Surname: ";
+			std::cout << "\nSurname: ";
 			std::cin >> str;
 			strcpy(p -> surname, str);
-			std::cout << "Passport series and number(e.g. AB6763287): ";
+			std::cout << "\nPassport series and number(e.g. AB6763287): ";
 			std::cin >> str;
 			strcpy(p -> passport, str);
 			p -> flight_number = all_flights.at(atoi(number) - 1) -> flight_number;
@@ -1015,8 +1014,8 @@ void ReturnTickets(Orders &orders)
 			if(atoi(number) != 1)
 			{
 				for_delete = p -> next;
-				if (p -> next -> next == NULL) orders.last = p;
 				p -> next = p -> next -> next;
+				if (p -> next -> next == NULL) orders.last = p;
 				delete [] for_delete;
 			}
 				else
@@ -1046,7 +1045,7 @@ void ReturnTickets(Orders &orders)
 			}
 	}
 }
-void ShowTickets(Orders orders, std::vector <Flight *> all_flights)
+void ShowTickets(Orders &orders, std::vector <Flight *> all_flights)
 {
 	system("cls");
 	Ticket *p;
@@ -1265,26 +1264,9 @@ int PrintMainMenu()
 
 	return atoi(&choice);
 }
-void OrdersSave(Orders orders)
-{
-	Ticket *p;
-	p = orders.head;
-    FILE *tickets;
-	tickets = fopen("tickets.txt", "w");
-
-	while(p)
-	{
-		fprintf(tickets, "%s %s %s %d %d %d %d\n", p -> name, p -> surname, p -> passport, p -> flight_number, p -> day, p -> hours, p -> minutes);
-        p = p -> next;
-	}
-
-	fclose(tickets);
-}
 
 int main()
 {
-	std::cout << "Loading...";
-
 	FILE *timetable;
 	timetable = fopen("timetable.txt", "r");
 
@@ -1322,34 +1304,29 @@ int main()
 	orders.amount = 0;
 	if (tickets != NULL)
 	{
-		if(getc(tickets) != EOF)
+		while (!feof(tickets))
 		{
-            rewind(tickets);
-			while (!feof(tickets))
+			Ticket *p;
+			p = new Ticket;
+			orders.amount += 1;
+			if (orders.head == NULL)
 			{
-				Ticket *p;
-				p = new Ticket;
-				orders.amount += 1;
-				if (orders.head == NULL)
+				orders.head = p;
+				orders.last = p;
+				p -> next = NULL;
+			}
+				else
 				{
-					orders.head = p;
+					orders.last -> next = p;
 					orders.last = p;
 					p -> next = NULL;
 				}
-					else
-					{
-						orders.last -> next = p;
-						orders.last = p;
-						p -> next = NULL;
-					}
-				fscanf(tickets, "%s %s %s %d %d %d %d\n", p -> name, p -> surname, p -> passport, &(p -> flight_number), &(p -> day), &(p -> hours), &(p -> minutes));
-			}
+			fscanf(tickets, "%s %s %s %d %d %d %d\n", p -> name, p -> surname, p -> passport, &(p -> flight_number), &(p -> day), &(p -> hours), &(p -> minutes));
 		}
 	}
 
 	fclose(tickets);
 
-    system("cls");
 	for(;;)
 	{
 		int choice;
@@ -1363,8 +1340,7 @@ int main()
 					break;
 			case 3: PrintTicketsMenu(orders, all_flights);
 					break;
-			case 4: OrdersSave(orders);
-					return 0;
+			case 4: return 0;
 		}
 	}
 }
