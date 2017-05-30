@@ -1,0 +1,49 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "ExerciseSelect.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TExerciseSelectForm *ExerciseSelectForm;
+String FileName;
+char Filename[20];
+//---------------------------------------------------------------------------
+__fastcall TExerciseSelectForm::TExerciseSelectForm(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TExerciseSelectForm::FormClose(TObject *Sender, TCloseAction &Action)
+
+{
+	PersonalForm->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TExerciseSelectForm::ReturnButtonClick(TObject *Sender)
+{
+	ExerciseSelectForm->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TExerciseSelectForm::StartExerciseButtonClick(TObject *Sender)
+{
+	if (ExerciseSelectListBox->ItemIndex < 10)
+	{
+		FileName = "Exercise" + IntToStr(ExerciseSelectListBox->ItemIndex + 1) + ".xrc";
+	}
+	if (ExerciseSelectListBox->ItemIndex == 11) FileName = "FinalTest.xrc";
+	if (ExerciseSelectListBox->ItemIndex == 10) FileName = "";
+	for (int Counter = 0; Counter < FileName.Length(); Counter++)
+	{
+		Filename[Counter] = FileName[Counter + 1];
+	}
+	Filename[FileName.Length()] = '\0';
+	ExerciseSelectForm->Hide();
+	ExerciseForm->Show();
+}
+//---------------------------------------------------------------------------
+

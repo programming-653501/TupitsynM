@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.613,D:\Универ\Программирование\2 семестр\KlavaRush\KlavaRush.cbproj=C:\Users\Admin\Documents\RAD Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.053,=C:\Users\Admin\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.736,=C:\Users\Admin\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.811,C:\Users\Admin\Documents\RAD Studio\Projects\WelcomePage.h=C:\Users\Admin\Documents\RAD Studio\Projects\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.019,D:\Универ\Программирование\2 семестр\KlavaRush\UsersCab.h=D:\Универ\Программирование\2 семестр\KlavaRush\PersonalArea.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.472,D:\Универ\Программирование\2 семестр\KlavaRush\SettingsPage.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.811,C:\Users\Admin\Documents\RAD Studio\Projects\WelcomePage.dfm=C:\Users\Admin\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.472,D:\Универ\Программирование\2 семестр\KlavaRush\SettingsPage.dfm=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.008,=C:\Users\Admin\Documents\RAD Studio\Projects\Project1.res</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.671,=C:\Users\Admin\Documents\RAD Studio\Projects\Project1.res</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.019,D:\Универ\Программирование\2 семестр\KlavaRush\UsersCab.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\PersonalArea.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.260,D:\Универ\Программирование\2 семестр\KlavaRush\List.h=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.811,C:\Users\Admin\Documents\RAD Studio\Projects\WelcomePage.cpp=C:\Users\Admin\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.483,D:\Универ\Программирование\2 семестр\KlavaRush\Node.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.758,D:\Универ\Программирование\2 семестр\KlavaRush\List.h=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.483,D:\Универ\Программирование\2 семестр\KlavaRush\Node.h=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.223,D:\Универ\Программирование\2 семестр\KlavaRush\RegisterForm.dfm=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.044,D:\Универ\Программирование\2 семестр\KlavaRush\Stats.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.198,D:\Универ\Программирование\2 семестр\KlavaRush\RegisterPage.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\RegisterForm.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.517,D:\Универ\Программирование\2 семестр\KlavaRush\User.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.971,D:\Универ\Программирование\2 семестр\KlavaRush\WelcomePage.h=C:\Users\Admin\Documents\RAD Studio\Projects\WelcomePage.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.223,D:\Универ\Программирование\2 семестр\KlavaRush\RegisterForm.h=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.198,D:\Универ\Программирование\2 семестр\KlavaRush\RegisterPage.dfm=D:\Универ\Программирование\2 семестр\KlavaRush\RegisterForm.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.386,D:\Универ\Программирование\2 семестр\KlavaRush\LoginForm.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\LoginPage.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.517,D:\Универ\Программирование\2 семестр\KlavaRush\User.h=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.971,D:\Универ\Программирование\2 семестр\KlavaRush\WelcomePage.cpp=C:\Users\Admin\Documents\RAD Studio\Projects\WelcomePage.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.472,D:\Универ\Программирование\2 семестр\KlavaRush\SettingsPage.h=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.205,D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.h=D:\Универ\Программирование\2 семестр\KlavaRush\LoginForm.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.909,D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.h=D:\Универ\Программирование\2 семестр\KlavaRush\UsersCab.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.915,D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.h=D:\Универ\Программирование\2 семестр\KlavaRush\ExercisePage.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.386,D:\Универ\Программирование\2 семестр\KlavaRush\LoginForm.h=D:\Универ\Программирование\2 семестр\KlavaRush\LoginPage.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.847,D:\Универ\Программирование\2 семестр\KlavaRush\ExerciseSelect.dfm=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.044,D:\Универ\Программирование\2 семестр\KlavaRush\Stats.h=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.386,D:\Универ\Программирование\2 семестр\KlavaRush\LoginForm.dfm=D:\Универ\Программирование\2 семестр\KlavaRush\LoginPage.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.019,D:\Универ\Программирование\2 семестр\KlavaRush\UsersCab.dfm=D:\Универ\Программирование\2 семестр\KlavaRush\PersonalArea.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.847,D:\Универ\Программирование\2 семестр\KlavaRush\ExerciseSelect.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.223,D:\Универ\Программирование\2 семестр\KlavaRush\RegisterForm.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.915,D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.dfm=D:\Универ\Программирование\2 семестр\KlavaRush\ExercisePage.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.971,D:\Универ\Программирование\2 семестр\KlavaRush\WelcomePage.dfm=C:\Users\Admin\Documents\RAD Studio\Projects\WelcomePage.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.758,D:\Универ\Программирование\2 семестр\KlavaRush\List.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.260,D:\Универ\Программирование\2 семестр\KlavaRush\List.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.198,D:\Универ\Программирование\2 семестр\KlavaRush\RegisterPage.h=D:\Универ\Программирование\2 семестр\KlavaRush\RegisterForm.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.909,D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.dfm=D:\Универ\Программирование\2 семестр\KlavaRush\UsersCab.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.205,D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.dfm=D:\Универ\Программирование\2 семестр\KlavaRush\LoginForm.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.847,D:\Универ\Программирование\2 семестр\KlavaRush\ExerciseSelect.h=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.124,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.443,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.750,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.255,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.827,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.313,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.300,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.099,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.661,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.962,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.909,D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\UsersCab.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.892,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.659,=D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.205,D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\LoginForm.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.915,D:\Универ\Программирование\2 семестр\KlavaRush\Unit1.cpp=D:\Универ\Программирование\2 семестр\KlavaRush\ExercisePage.cpp</Transaction>
+  </Transactions>
+</BorlandProject>

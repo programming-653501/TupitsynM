@@ -1,0 +1,40 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "PersonalArea.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TPersonalForm *PersonalForm;
+//---------------------------------------------------------------------------
+__fastcall TPersonalForm::TPersonalForm(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TPersonalForm::FormClose(TObject *Sender, TCloseAction &Action)
+{
+	LoginForm->Show();
+}
+//---------------------------------------------------------------------------
+void __fastcall TPersonalForm::ExitButtonClick(TObject *Sender)
+{
+	PersonalForm->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TPersonalForm::StatsButtonClick(TObject *Sender)
+{
+	ShowMessage("Упражнений всего выполнено: \nВсего ошибок сделано: \nВремени всего затрачено: \n");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TPersonalForm::SettingsButtonClick(TObject *Sender)
+{
+	PersonalForm->Hide();
+	SettingsForm->Show();
+}
+//---------------------------------------------------------------------------
+

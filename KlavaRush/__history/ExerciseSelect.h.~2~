@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------
+
+#ifndef ExerciseSelectH
+#define ExerciseSelectH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include "PersonalArea.h"
+//---------------------------------------------------------------------------
+class TExerciseSelectForm : public TForm
+{
+__published:	// IDE-managed Components
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TExerciseSelectForm(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TExerciseSelectForm *ExerciseSelectForm;
+//---------------------------------------------------------------------------
+#endif

@@ -1,0 +1,21 @@
+//---------------------------------------------------------------------------
+
+#ifndef ListH
+#define ListH
+//---------------------------------------------------------------------------
+#endif
+#include "Node.h"
+
+class List
+{
+	private:
+		Node *Head;
+		Node *Tail;
+	public:
+		void Add(User *NewUser);
+		bool Delete(String UserNickname);
+		User* Check(String Nickname, String Password);
+		Node* GetHead();
+
+	List();
+};

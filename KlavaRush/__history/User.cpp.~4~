@@ -1,0 +1,62 @@
+//---------------------------------------------------------------------------
+
+
+#pragma hdrstop
+
+#include "User.h"
+
+//---------------------------------------------------------------------------
+
+#pragma package(smart_init)
+
+void User::SetName(String _Name)
+{
+	Name = _Name;
+}
+
+String User::GetName()
+{
+	return Name;
+}
+
+void User::SetNickname(String _Nickname)
+{
+	Nickname = _Nickname;
+}
+
+String User::GetNickname()
+{
+	return Nickname;
+}
+
+void User::SetPassword(String _Password)
+{
+	Password = _Password;
+}
+
+String User::GetPassword()
+{
+	return Password;
+}
+
+void User::SetExercise(int Number, bool State)
+{
+	Exercises[Number] = State;
+}
+
+bool User::GetExercise(int Number)
+{
+	return Exercises[Number];
+}
+
+User::User()
+{
+	Name = "";
+	Nickname = "";
+	Password = "";
+	Exercises[0] = true;
+	for (int Counter = 1; Counter < 10; Counter++)
+	{
+        Exercises[Counter] = false;
+    }
+}

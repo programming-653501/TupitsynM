@@ -1,0 +1,60 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "RegisterPage.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TRegisterForm *RegisterForm;
+extern List UserList;
+//---------------------------------------------------------------------------
+__fastcall TRegisterForm::TRegisterForm(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TRegisterForm::FormClose(TObject *Sender, TCloseAction &Action)
+{
+	LoginForm->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TRegisterForm::RegisterButtonClick(TObject *Sender)
+{
+	if (PasswordEdit1->Text != "" && NameEdit->Text != "" && NicknameEdit->Text != "")
+	{
+		if (!UserList.Check((AnsiString) NicknameEdit->Text))
+		{
+			if (PasswordEdit1->Text != PasswordEdit2->Text)
+			{
+				ShowMessage("Пароли не совпадают. Попробуйте еще раз.");
+				PasswordEdit1->Clear();
+				PasswordEdit2->Clear();
+			}
+				else
+				{
+					User *NewUser = new User;
+					NewUser->SetName(NameEdit->Text);
+					NewUser->SetNickname(NicknameEdit->Text);
+					NewUser->SetPassword(PasswordEdit1->Text);
+					UserList.Add(NewUser);
+					ShowMessage("Вы успешно зарегестрированы! Теперь войдите в свою учетную запись.");
+					RegisterForm->Close();
+				}
+		}
+			else
+			{
+				ShowMessage("Пользователь с таким логином уже существует.");
+                PasswordEdit1->Clear();
+				PasswordEdit2->Clear();
+				return;
+            }
+	}
+		else
+		{
+			ShowMessage("Вы ввели не все данные.");
+        }
+}
+//---------------------------------------------------------------------------

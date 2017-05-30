@@ -1,0 +1,231 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "ExercisePage.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TExerciseForm *ExerciseForm;
+extern AnsiString FileName;
+extern User *CurrentUser;
+int LinesCounter = 0;
+int PosCounter = 1;
+int ColorStartPos = 0;
+//---------------------------------------------------------------------------
+__fastcall TExerciseForm::TExerciseForm(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TExerciseForm::FormClose(TObject *Sender, TCloseAction &Action)
+{
+	CurrentUser->SetMistakes(StrToInt(AmountOfMistakesLabel->Caption));
+	RichEdit->Clear();
+	EnterEdit->Clear();
+	LinesCounter = 0;
+	PosCounter = 1;
+	ColorStartPos = 0;
+	AmountOfMistakesLabel->Caption = "0";
+	ExerciseSelectForm->Show();
+}
+//---------------------------------------------------------------------------
+void __fastcall TExerciseForm::FormShow(TObject *Sender)
+{
+	if (FileName != "")
+	{
+		if (SettingsForm->RadioGroup->ItemIndex == 0)
+		{
+			FileName = FileName + "RUS.xrc";
+		}
+			else
+			{
+				FileName = FileName + "ENG.xrc";
+			}
+		RichEdit->Lines->LoadFromFile(FileName);
+	}
+		else
+		{
+			if (SettingsForm->RadioGroup->ItemIndex == 0)
+			{
+				AnsiString Chars = "…й÷ц”у к≈еЌн√гЎшўщ«з’хЏъ‘фџы¬вјаѕп–рќоЋлƒд∆жЁэя€„ч—сћм»и“т№ьЅбёю.,      ®Є1234567890-_=+";
+				AnsiString RandomString = "";
+				randomize();
+				int Lines = 10 + (rand() % 30);
+				int CharsAmount;
+				for (int LinesCounter = 0; LinesCounter < Lines; LinesCounter++)
+				{
+					CharsAmount = 20 + (rand() % 40);
+					for (int CharsAmountCounter = 1; CharsAmountCounter < CharsAmount; CharsAmountCounter++)
+					{
+						RandomString = RandomString + Chars[1 + (rand() % 85)];
+					}
+					RichEdit->Lines->Add(RandomString);
+					RandomString = "";
+				}
+			}
+				else
+				{
+					String Chars = "QqWw EeRr TtYy UuIi OoPp AaSs DdFf GgHh JjKkLlZzXxCcVvBbNnMm 1234567890()+=_-[{]}\\|\/?,.<>;:";
+					String RandomString = "";
+					randomize();
+					int Lines = 10 + (rand() % 30);
+					int CharsAmount;
+					for (int LinesCounter = 0; LinesCounter < Lines; LinesCounter++)
+					{
+						CharsAmount = 20 + (rand() % 40);
+						for (int CharsAmountCounter = 1; CharsAmountCounter < CharsAmount; CharsAmountCounter++)
+						{
+							RandomString = RandomString + Chars[1 + (rand() % 90)];
+						}
+						RichEdit->Lines->Add(RandomString);
+						RandomString = "";
+					}
+				}
+        }
+	if (SettingsForm->RadioGroup->ItemIndex == 0)
+	{
+		Panel->Caption = (AnsiString)"®";
+		Panel1->Caption = (AnsiString)"1";
+		Panel2->Caption = (AnsiString)"2";
+		Panel3->Caption = (AnsiString)"3";
+		Panel4->Caption = (AnsiString)"4";
+		Panel5->Caption = (AnsiString)"5";
+		Panel6->Caption = (AnsiString)"6";
+		Panel7->Caption = (AnsiString)"7";
+		Panel8->Caption = (AnsiString)"8";
+		Panel9->Caption = (AnsiString)"9";
+		Panel0->Caption = (AnsiString)"0";
+		PanelQ->Caption = (AnsiString)"…";
+		PanelW->Caption = (AnsiString)"÷";
+		PanelE->Caption = (AnsiString)"”";
+		PanelR->Caption = (AnsiString)" ";
+		PanelT->Caption = (AnsiString)"≈";
+		PanelY->Caption = (AnsiString)"Ќ";
+		PanelU->Caption = (AnsiString)"√";
+		PanelI->Caption = (AnsiString)"Ў";
+		PanelO->Caption = (AnsiString)"ў";
+		PanelP->Caption = (AnsiString)"«";
+		PanelCh1->Caption = (AnsiString)"’";
+		PanelCh2->Caption = (AnsiString)"Џ";
+		PanelCh3->Caption = (AnsiString)"\\|";
+		PanelA->Caption = (AnsiString)"‘";
+		PanelS->Caption = (AnsiString)"џ";
+		PanelD->Caption = (AnsiString)"¬";
+		PanelF->Caption = (AnsiString)"ј";
+		PanelG->Caption = (AnsiString)"ѕ";
+		PanelH->Caption = (AnsiString)"–";
+		PanelJ->Caption = (AnsiString)"ќ";
+		PanelK->Caption = (AnsiString)"Ћ";
+		PanelL->Caption = (AnsiString)"ƒ";
+		PanelCh4->Caption = (AnsiString)"∆";
+		PanelCh5->Caption = (AnsiString)"Ё";
+		PanelZ->Caption = (AnsiString)"я";
+		PanelX->Caption = (AnsiString)"„";
+		PanelC->Caption = (AnsiString)"—";
+		PanelV->Caption = (AnsiString)"ћ";
+		PanelB->Caption = (AnsiString)"»";
+		PanelN->Caption = (AnsiString)"“";
+		PanelM->Caption = (AnsiString)"№";
+		PanelCh7->Caption = (AnsiString)"Ѕ";
+		PanelCh8->Caption = (AnsiString)"ё";
+		PanelCh9->Caption = (AnsiString)".,";
+	}
+	if (SettingsForm->RadioGroup->ItemIndex == 1)
+	{
+		Panel->Caption = '~';
+		Panel1->Caption = '1';
+		Panel2->Caption = '2';
+		Panel3->Caption = '3';
+		Panel4->Caption = '4';
+		Panel5->Caption = '5';
+		Panel6->Caption = '6';
+		Panel7->Caption = '7';
+		Panel8->Caption = '8';
+		Panel9->Caption = '9';
+		Panel0->Caption = '0';
+		PanelQ->Caption = 'Q';
+		PanelW->Caption = 'W';
+		PanelE->Caption = 'E';
+		PanelR->Caption = 'R';
+		PanelT->Caption = 'T';
+		PanelY->Caption = 'Y';
+		PanelU->Caption = 'U';
+		PanelI->Caption = 'I';
+		PanelO->Caption = 'O';
+		PanelP->Caption = 'P';
+		PanelCh1->Caption = "[{";
+		PanelCh2->Caption = "]}";
+		PanelCh3->Caption = "\\|";
+		PanelA->Caption = 'A';
+		PanelS->Caption = 'S';
+		PanelD->Caption = 'D';
+		PanelF->Caption = 'F';
+		PanelG->Caption = 'G';
+		PanelH->Caption = 'H';
+		PanelJ->Caption = 'J';
+		PanelK->Caption = 'K';
+		PanelL->Caption = 'L';
+		PanelCh4->Caption = ";:";
+		PanelCh5->Caption = "\'\"";
+		PanelZ->Caption = 'Z';
+		PanelX->Caption = 'X';
+		PanelC->Caption = 'C';
+		PanelV->Caption = 'V';
+		PanelB->Caption = 'B';
+		PanelN->Caption = 'N';
+		PanelM->Caption = 'M';
+		PanelCh7->Caption = ",<";
+		PanelCh8->Caption = ".>";
+		PanelCh9->Caption = "\/?";
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TExerciseForm::EnterEditKeyPress(TObject *Sender, wchar_t &Key)
+{
+	AnsiString Ch;
+	AnsiString Temp;
+	Ch = AnsiString(Key);
+	Temp = AnsiString(RichEdit->Lines->Strings[LinesCounter]);
+	if (Ch != Temp[PosCounter])
+	{
+		ShowMessage("¬ы ошиблись. ќтдохните и начните набирать строку сначала.");
+		AmountOfMistakesLabel->Caption = IntToStr(StrToInt(AmountOfMistakesLabel->Caption) + 1);
+		PosCounter = 1;
+		RichEdit->SelStart = ColorStartPos;
+		RichEdit->SelLength = Temp.Length();
+		RichEdit->SelAttributes->Color = clWindowText;
+		EnterEdit->Clear();
+		Key = ' ';
+		return;
+	}
+		else
+		{
+			RichEdit->SelStart = ColorStartPos + PosCounter - 1;
+			RichEdit->SelLength = 1;
+			RichEdit->SelAttributes->Color = clLime;
+			PosCounter++;
+		}
+	if (PosCounter > Temp.Length())
+	{
+		if (LinesCounter + 1 == RichEdit->Lines->Count)
+		{
+			ShowMessage("¬ы успешно выполнили упражнение");
+			CurrentUser->SetExercisesDone(1);
+			if (ExerciseSelectForm->ExerciseSelectListBox->ItemIndex < 9) CurrentUser->SetExercise(ExerciseSelectForm->ExerciseSelectListBox->ItemIndex + 1, true);
+			Key = ' ';
+			ExerciseForm->Close();
+		}
+			else
+			{
+				ColorStartPos += Temp.Length() + 1;
+				LinesCounter++;
+				PosCounter = 1;
+				EnterEdit->Clear();
+				Key = ' ';
+			}
+	 }
+}
+//---------------------------------------------------------------------------
+

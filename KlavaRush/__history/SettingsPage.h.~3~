@@ -1,0 +1,26 @@
+//---------------------------------------------------------------------------
+
+#ifndef SettingsPageH
+#define SettingsPageH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include "PersonalArea.h"
+#include <ExtCtrls.hpp>
+//---------------------------------------------------------------------------
+class TSettingsForm : public TForm
+{
+__published:	// IDE-managed Components
+	TCheckBox *MusicCheckBox;
+	TRadioGroup *RadioGroup;
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TSettingsForm(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TSettingsForm *SettingsForm;
+//---------------------------------------------------------------------------
+#endif

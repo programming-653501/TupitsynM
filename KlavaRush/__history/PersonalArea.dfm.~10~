@@ -1,0 +1,59 @@
+object PersonalForm: TPersonalForm
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = #1051#1080#1095#1085#1099#1081' '#1082#1072#1073#1080#1085#1077#1090
+  ClientHeight = 377
+  ClientWidth = 511
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object ExercisesButton: TButton
+    Left = 144
+    Top = 48
+    Width = 217
+    Height = 49
+    Cursor = crHandPoint
+    Caption = #1059#1087#1088#1072#1078#1085#1077#1085#1080#1103
+    TabOrder = 0
+    OnClick = ExercisesButtonClick
+  end
+  object StatsButton: TButton
+    Left = 144
+    Top = 128
+    Width = 217
+    Height = 49
+    Cursor = crHandPoint
+    Caption = #1057#1090#1072#1090#1080#1089#1090#1080#1082#1072
+    TabOrder = 1
+    OnClick = StatsButtonClick
+  end
+  object SettingsButton: TButton
+    Left = 144
+    Top = 208
+    Width = 217
+    Height = 49
+    Cursor = crHandPoint
+    Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+    TabOrder = 2
+    OnClick = SettingsButtonClick
+  end
+  object ExitButton: TButton
+    Left = 144
+    Top = 288
+    Width = 217
+    Height = 49
+    Cursor = crHandPoint
+    Caption = #1042#1099#1093#1086#1076
+    TabOrder = 3
+    OnClick = ExitButtonClick
+  end
+end

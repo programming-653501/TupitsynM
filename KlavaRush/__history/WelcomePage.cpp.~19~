@@ -1,0 +1,68 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "WelcomePage.h"
+#include "LoginPage.h"
+#include <stdio.h>
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TWelcomeForm *WelcomeForm;
+FILE *Users = fopen("Users.sav", "r");
+//---------------------------------------------------------------------------
+__fastcall TWelcomeForm::TWelcomeForm(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TWelcomeForm::StartButtonClick(TObject *Sender)
+{
+	while(!feof(Users))
+	{
+		char Name[20];
+		char Nickname[20];
+		char Password[20];
+		bool Exercises[10];
+		fscanf(Users, "%s %s %s %u %u %u %u %u %u %u %u %u %u\n", Name, Nickname, Password, &Exercises[0], &Exercises[1], &Exercises[2], &Exercises[3], &Exercises[4], &Exercises[5], &Exercises[6], &Exercises[7], &Exercises[8], &Exercises[9]);
+		User *NewUser = new User;
+		NewUser->SetName((String)Name);
+		NewUser->SetNickname((String)Nickname);
+		NewUser->SetPassword((String)Password);
+		for (int Counter = 0; Counter < 10; Counter++)
+		{
+			NewUser->SetExercise(Counter, Exercises[Counter]);
+		}
+		UserList.Add(NewUser, UserList);
+	}
+	fclose(Users);
+	LoginForm->Show();
+	WelcomeForm->Hide();
+}
+//---------------------------------------------------------------------------
+void __fastcall TWelcomeForm::ExitButtonClick(TObject *Sender)
+{
+	WelcomeForm->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TWelcomeForm::InfoButtonClick(TObject *Sender)
+{
+	ShowMessage("KlavaRush Версия 1.0.\nСделано творцом по имени Hardicon.\nСпасибо за использование именно моего приложения.");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TWelcomeForm::FormClose(TObject *Sender, TCloseAction &Action)
+{
+	Node *Pointer;
+	Pointer = UserList.GetHead();
+	while (Pointer)
+	{
+		fprintf(Users, "%s %s %s %u %u %u %u %u %u %u %u %u %u\n", Pointer->UserInfo->GetName(), Pointer->UserInfo->GetNickname(), Pointer->UserInfo->GetPassword(), Pointer->UserInfo->GetExercise(0), Pointer->UserInfo->GetExercise(1), Pointer->UserInfo->GetExercise(2), Pointer->UserInfo->GetExercise(3), Pointer->UserInfo->GetExercise(4), Pointer->UserInfo->GetExercise(5), Pointer->UserInfo->GetExercise(6), Pointer->UserInfo->GetExercise(7), Pointer->UserInfo->GetExercise(8), Pointer->UserInfo->GetExercise(9));
+		Pointer = Pointer->Next;
+	}
+	fclose(Users);
+}
+//---------------------------------------------------------------------------
+

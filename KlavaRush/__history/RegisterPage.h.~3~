@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------
+
+#ifndef RegisterPageH
+#define RegisterPageH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include "LoginPage.h"
+//---------------------------------------------------------------------------
+class TRegisterForm : public TForm
+{
+__published:	// IDE-managed Components
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TRegisterForm(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TRegisterForm *RegisterForm;
+//---------------------------------------------------------------------------
+#endif

@@ -1,0 +1,21 @@
+//---------------------------------------------------------------------------
+
+#ifndef PersonalAreaH
+#define PersonalAreaH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+//---------------------------------------------------------------------------
+class TPersonalForm : public TForm
+{
+__published:	// IDE-managed Components
+private:	// User declarations
+public:		// User declarations
+	__fastcall TPersonalForm(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TPersonalForm *PersonalForm;
+//---------------------------------------------------------------------------
+#endif

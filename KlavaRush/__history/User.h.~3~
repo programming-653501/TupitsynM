@@ -1,0 +1,28 @@
+//---------------------------------------------------------------------------
+
+#ifndef UserH
+#define UserH
+//---------------------------------------------------------------------------
+#endif
+#include <vcl.h>
+
+class User
+{
+	private:
+		String Name;
+		String Nickname;
+		String Password;
+		bool Exercises[10];
+	public:
+		void SetName(String _Name);
+		String GetName();
+		void SetNickname(String _Nickname);
+		String GetNickname();
+		void SetPassword(String _Password);
+		String GetPassword();
+		void SetExercise(int Number, bool State);
+		bool GetExercise(int Number);
+
+
+	User();
+};
